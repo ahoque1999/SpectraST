@@ -1,5 +1,6 @@
 #include "SpectraSTLibImporter.hpp"
 #include "SpectraSTMspLibImporter.hpp"
+#include "SpectraSTMZLBTXTLibImporter.hpp"
 #include "SpectraSTXHunterLibImporter.hpp"
 #include "SpectraSTPepXMLLibImporter.hpp"
 #include "SpectraSTSpLibImporter.hpp"
@@ -657,6 +658,8 @@ SpectraSTLibImporter* SpectraSTLibImporter::createSpectraSTLibImporter(vector<st
     return (new SpectraSTMzXMLLibImporter(impFileNames, lib, params));
   } else if (fn.ext == ".map") {
     return (new SpectraSTMAPredictionLibImporter(impFileNames, lib, params));  
+  } else if (fn.ext == ".mzlb.txt") {
+    return (new SpectraSTMZLBTXTLibImporter(impFileNames, lib, params)); 
   } else if (fn.ext == ".sptxt") {
     // treat as .msp unless there is a corresponding .splib in the directory
     if (impFileNames.size() > 1) {
